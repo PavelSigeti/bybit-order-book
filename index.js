@@ -11,7 +11,7 @@ const orders = {};
 
 app.use(cors({credentials: true, origin: 'http://scalplist.tk',}));
 
-app.get('/orders', function(req,resp) {
+app.get('/orders-bybit', function(req,resp) {
     resp.send(orders);
 });
 app.get('/test', function(req,resp) {
@@ -202,8 +202,12 @@ setInterval(async()=>{
 }, 2000);
 
 
-const socket = io("http://localhost:8100");
-// const socket = io("https://scalplist.com");
+const socket = io("http://localhost:8100", {
+    path: '/socket-bybit'
+});
+// const socket = io("https://scalplist.com", {
+//     path: '/socket-bybit'
+// });
 
 
 const listener = (value) => {
